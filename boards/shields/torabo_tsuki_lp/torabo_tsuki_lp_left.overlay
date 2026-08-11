@@ -14,13 +14,30 @@
     acceleration-exponent = <1>;
 };
 
+/ {
+    // スクロール用の速度適応: 通常速度は等倍のまま、速く回したときだけ最大3xに加速
+    scroll_accel: scroll_accel {
+        compatible = "zmk,input-processor-acceleration";
+        status = "okay";
+        #input-processor-cells = <0>;
+        input-type = <INPUT_EV_REL>;
+        track-remainders;
+        min-factor = <1000>;
+        max-factor = <3000>;
+        speed-threshold = <1500>;
+        speed-max = <6000>;
+        acceleration-exponent = <1>;
+    };
+};
+
 &pointing_listener {
     input-processors = <&pointer_accel>,
-                       <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-                       <&zip_temp_layer 1 500>;
+                       <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
     scroller {
         layers = <3>;
-        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 10>;
+        input-processors = <&scroll_accel>,
+                           <&zip_xy_to_scroll_mapper>,
+                           <&zip_scroll_scaler 1 10>;
     };
 };
