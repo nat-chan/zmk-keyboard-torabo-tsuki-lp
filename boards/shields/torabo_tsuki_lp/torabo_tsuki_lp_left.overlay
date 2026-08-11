@@ -3,12 +3,12 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <behaviors/input_gestures_accel.dtsi>
 
-// 速度適応カーソル移動: 低速時は0.6xで精密に、高速時は最大1.6x
+// 速度適応カーソル移動: 低速時は0.3xで精密に、高速時は最大0.8x
 &pointer_accel {
     input-type = <INPUT_EV_REL>;
     track-remainders;
-    min-factor = <600>;
-    max-factor = <1600>;
+    min-factor = <300>;
+    max-factor = <800>;
     speed-threshold = <1500>;
     speed-max = <6000>;
     acceleration-exponent = <1>;
