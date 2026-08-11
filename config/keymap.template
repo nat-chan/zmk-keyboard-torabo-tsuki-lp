@@ -1,0 +1,21 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+{{behaviour_includes}}
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        bt_clear {
+            bindings = <&bt BT_CLR>;
+            key-positions = <28 29>;
+            layers = <2>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+{{rendered_layers}}
+    };
+};
