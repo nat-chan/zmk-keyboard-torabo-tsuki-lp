@@ -14,6 +14,10 @@ manifest:
       remote: nat-chan
       revision: main
       import: true
+    # importより優先: v0.3(Zephyr 3.5)互換パッチ済みフォークに固定
+    - name: zmk-feature-custom-settings
+      remote: nat-chan
+      revision: v0.3-compat
     # cormoran fork (custom studio RPC対応) のnat-chanミラー
     - name: zmk
       remote: nat-chan
