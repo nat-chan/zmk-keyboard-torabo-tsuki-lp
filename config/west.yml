@@ -6,13 +6,16 @@ manifest:
       url-base: https://github.com/sekigon-gonnoc
     - name: oleksandrmaslov
       url-base: https://github.com/oleksandrmaslov
+    - name: nat-chan
+      url-base: https://github.com/nat-chan
   projects:
     - name: zmk-pointing-acceleration
       remote: oleksandrmaslov
       revision: 0da8f97f8f2abb18fcc9d488b25357511922cf32
+    # cormoran fork (custom studio RPC対応) のnat-chanミラー
     - name: zmk
-      remote: zmkfirmware
-      revision: v0.3
+      remote: nat-chan
+      revision: 35bb5dafecd5931c432c74e1b630cf12097671e4
       import: app/west.yml
     - name: zmk-component-bmp-boost
       remote: sekigon-gonnoc
