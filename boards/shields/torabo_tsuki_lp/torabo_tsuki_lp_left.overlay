@@ -8,14 +8,14 @@
         compatible = "zmk,input-processor-runtime-accel";
         #input-processor-cells = <0>;
         instance-id = "pointer";
-        default-curve = <0 300 1500 1000 6000 800>;
+        default-curve = <447 531 68017 910 165412 3638 301093 12950>;
     };
 
     scroll_accel: scroll_accel {
         compatible = "zmk,input-processor-runtime-accel";
         #input-processor-cells = <0>;
         instance-id = "scroll";
-        default-curve = <0 1000 1500 1000 6000 3000>;
+        default-curve = <26 496 3914 1827 6125 4062 7612 7664>;
     };
 };
 
