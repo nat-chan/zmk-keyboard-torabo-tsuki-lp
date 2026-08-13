@@ -1,32 +1,21 @@
 #include "torabo_tsuki_lp.dtsi"
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
-#include <behaviors/input_gestures_accel.dtsi>
-
-// 速度適応カーソル移動: 低速時は0.3xで精密に、高速時は最大0.8x
-&pointer_accel {
-    input-type = <INPUT_EV_REL>;
-    track-remainders;
-    min-factor = <300>;
-    max-factor = <800>;
-    speed-threshold = <1500>;
-    speed-max = <6000>;
-    acceleration-exponent = <1>;
-};
 
 / {
-    // スクロール用の速度適応: 通常速度は等倍のまま、速く回したときだけ最大3xに加速
-    scroll_accel: scroll_accel {
-        compatible = "zmk,input-processor-acceleration";
-        status = "okay";
+    // 実行時設定可能な速度カーブ (Webアプリから変更可、初期値は従来の体感を再現)
+    pointer_accel: pointer_accel {
+        compatible = "zmk,input-processor-runtime-accel";
         #input-processor-cells = <0>;
-        input-type = <INPUT_EV_REL>;
-        track-remainders;
-        min-factor = <1000>;
-        max-factor = <3000>;
-        speed-threshold = <1500>;
-        speed-max = <6000>;
-        acceleration-exponent = <1>;
+        instance-id = "pointer";
+        default-curve = <0 300 1500 1000 6000 800>;
+    };
+
+    scroll_accel: scroll_accel {
+        compatible = "zmk,input-processor-runtime-accel";
+        #input-processor-cells = <0>;
+        instance-id = "scroll";
+        default-curve = <0 1000 1500 1000 6000 3000>;
     };
 };
 

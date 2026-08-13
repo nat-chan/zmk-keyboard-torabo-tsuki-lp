@@ -9,9 +9,11 @@ manifest:
     - name: nat-chan
       url-base: https://github.com/nat-chan
   projects:
-    - name: zmk-pointing-acceleration
-      remote: oleksandrmaslov
-      revision: 0da8f97f8f2abb18fcc9d488b25357511922cf32
+    # 実行時設定可能な速度カーブ (custom-settings含めimport)
+    - name: zmk-module-runtime-accel
+      remote: nat-chan
+      revision: main
+      import: true
     # cormoran fork (custom studio RPC対応) のnat-chanミラー
     - name: zmk
       remote: nat-chan
